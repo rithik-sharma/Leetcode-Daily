@@ -11,13 +11,9 @@ class Solution {
                 greater_than_count++;
             }
         }
-        if(less_than_count == n){
+        if(less_than_count == n ||greater_than_count == n){
             return true;
         }
-        if(greater_than_count == n){
-            return true;
-        }
-        
         return false;
     }
 }
