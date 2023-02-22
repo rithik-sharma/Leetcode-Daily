@@ -1,29 +1,42 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> list=new ArrayList<>();
-        int left=0,right=matrix[0].length;
-        int top=0,bottom=matrix.length;
-        while(left<right && top<bottom){
-        for(int i=left;i<right;i++){
-            list.add(matrix[top][i]);
-        }
-        top+=1;
-        for(int i=top;i<bottom;i++){
-            list.add(matrix[i][right-1]);
-        }
-        right-=1;
-         if (!(left<right && top<bottom)){
-                break;
+        int minr = 0;
+        int minc = 0;
+        int maxr = matrix.length -1;
+        int maxc = matrix[0].length - 1;
+         int totalNoElement = matrix.length*matrix[0].length;
+        int count = 0;
+        while(count< totalNoElement){
+            //top wall
+            for(int i= minc; i<= maxc && count< totalNoElement; i++ ){
+               list.add(matrix[minr][i]); 
+                count++;
             }
-        for(int i=right-1;i>left;i--){
-            list.add(matrix[bottom-1][i]);
+            minr++;
+            
+            // right wall
+             for(int i= minr; i<= maxr && count< totalNoElement; i++ ){
+               list.add(matrix[i][maxc]);
+                 count++;
+            }
+            maxc--;
+            
+            //bottom wall
+             for(int i = maxc; i>= minc && count< totalNoElement; i--){
+                list.add(matrix[maxr][i]);
+                 count++;
+            }
+            maxr--;
+            
+            //left wall
+            for(int i = maxr;i >= minr && count< totalNoElement; i--){
+                list.add(matrix[i][minc]);
+                count++;
+            }
+            minc++;
+         
         }
-        bottom-=1;
-        for(int i=bottom;i>=top;i--){
-            list.add(matrix[i][left]);
-        }
-        left+=1;
-    }
         return list;
     }
     
