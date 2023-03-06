@@ -1,24 +1,31 @@
 class Solution {
     public int[] intersect(int[] a, int[] b) {
-        ArrayList<Integer> ans = new ArrayList<>();
-        Arrays.sort(a);
-        Arrays.sort(b);
-        int i =0,j=0;
-        while(i<a.length && j<b.length){
-            if(a[i]<b[j]){
-                i++;
-            }else if(b[j]<a[i]){
-                j++;
+    HashMap<Integer, Integer> fmap = new HashMap<>();
+        for(int i =0;  i<a.length; i++){
+            if(fmap.containsKey(a[i])){
+                int of = fmap.get(a[i]);
+                int nf = of+1;
+                fmap.put(a[i] , nf);
             }else{
-                ans.add(a[i]);
-                i++;
-                j++;
+                fmap.put(a[i] , 1);
             }
         }
-        int k =0;
-        int[] arr = new int[ans.size()];
-        for(int e: ans){
-            arr[k++] = e;
+        
+        ArrayList<Integer> box = new ArrayList<>();
+        
+        for(int val: b){
+            if(fmap.containsKey(val) && fmap.get(val) > 0){
+                box.add(val);
+                int of = fmap.get(val);
+                int nf = of-1;
+                fmap.put(val , nf);
+            }
+        }
+        
+        int[] arr = new int[box.size()];
+        int index =0;
+        for(int i : box){
+            arr[index++] = i;
         }
         
         return arr;
