@@ -15,7 +15,9 @@ class Solution {
         }
         Queue<Integer> q = new LinkedList<>();
         for(int i = 0; i < v; i++) {
-            if(indeg[i] == 0) q.add(i);
+            if(indeg[i] == 0){
+               q.add(i); 
+            } 
         }
         while(!q.isEmpty()) {
             int temp = q.poll();
