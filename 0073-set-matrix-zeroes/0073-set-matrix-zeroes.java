@@ -131,6 +131,10 @@
         if(col0 == 0){
             for(int i =0; i<n; i++) matrix[i][0] = 0; 
         }
+        
+        // here in this we don't take the extra space we just maintain the 0th col and 0th row as the 
+        // checker and mark that 0
+        //so the tc is O(n^2) as we itrate n*m two times 
     
      }
  }
