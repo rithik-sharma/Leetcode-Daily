@@ -20,16 +20,16 @@ class Solution {
         
         TreeNode cur = root;
         
-        while(cur != null || !stack.isEmpty()){
-            while(cur != null){
+        while(true){
+            if(cur != null){
                 stack.push(cur);
                 cur = cur.left;
+            }else{
+                if(stack.isEmpty()) break;
+                cur = stack.pop();
+                ans.add(cur.val);
+                cur = cur.right;
             }
-            
-            TreeNode pop = stack.pop();
-            ans.add(pop.val);
-            
-            cur = pop.right;
         }
         
         return ans;
