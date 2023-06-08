@@ -24,6 +24,6 @@ class Solution {
     
     // Recursively check the left and right subtrees of p and q
     // If both the left and right subtrees are the same, then p and q are the same tree
-    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    return  isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
   }
 }
