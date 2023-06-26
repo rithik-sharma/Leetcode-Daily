@@ -31,13 +31,6 @@ class Solution {
        int[] dp = new int[n+1];
         Arrays.fill(dp, -1);
         
-        int ans = tabulation(n, dp);
-        
-        return ans;
-    }
-    
-    
-    public int tabulation(int n , int[] dp){
         if(n<=1) return n;
         dp[0] = 0;
         dp[1] = 1;
@@ -47,7 +40,6 @@ class Solution {
         }
         
         return dp[n];
-        
     }
     
 }
