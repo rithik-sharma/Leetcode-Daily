@@ -1,13 +1,13 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        HashMap<Integer , Integer> map = new HashMap<>();
-        for(int e : nums){
-            map.put(e , map.getOrDefault(e , 0)+1);
-        }
+       if(nums.length == 0)
+           return false;
         
-        for(int e: nums){
-            if(map.get(e) > 1)
+        HashSet<Integer> set = new HashSet<>();
+        for(int e : nums){
+            if(!set.add(e)){
                 return true;
+            }
         }
         
         return false;
