@@ -1,32 +1,35 @@
 class Solution {
-    public boolean search(int[] nums, int key) {
-        int l =0 , r = nums.length-1;
+    public boolean search(int[] nums, int target) {
+        int s = 0;
+        int e = nums.length - 1;
         
-        while(l <= r){
-            int mid = l + (r-l)/2;
-            if(key == nums[mid]){return true;}
+        while(s <= e){
+            int mid = s + (e - s)/2;
+            if(nums[mid] == target){
+                return true;
+            }
             
-            if(nums[l] < nums[mid]){
-                if(key < nums[mid] && key >= nums[l]){
-                    r = mid - 1;
-                }else {
-                    l = mid + 1;
+            if(nums[s] < nums[mid]){
+                if(target >= nums[s] && target < nums[mid]){
+                    e = mid - 1;
+                }else{
+                    s = mid + 1;
                 }
-            }else if(nums[r] > nums[mid]) {
-                 if(key > nums[mid] && key <= nums[r]){
-                    l = mid + 1;
-                }else {
-                    r = mid - 1;
+            }else if(nums[e] > nums[mid]){
+                if(target > nums[mid] && target <= nums[e]){
+                    s = mid +1;
+                }else{
+                    e = mid -1;
                 }
-            }else {
-                if(nums[mid] == nums[l]){
-                    l++;
-                }else if(nums[mid] == nums[r]){
-                    r--;
+            }else{
+                if(nums[s] == nums[mid]){
+                    s++;
+                }else if(nums[e] == nums[mid]){
+                    e--;
                 }
             }
         }
-        return false;
         
+        return false;
     }
 }
