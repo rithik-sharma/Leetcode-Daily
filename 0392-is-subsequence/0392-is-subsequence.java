@@ -1,9 +1,9 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
         int len = s.length();
-        if(s.length() == 0){
-            return true;
-        }
+        // if(s.length() == 0){
+        //     return true;
+        // }
         
         int matchingLength = solve(s,t,0,0);
         
