@@ -4,13 +4,10 @@ class Solution {
         int maxSum = Integer.MIN_VALUE;
         
         for(int i =0; i<nums.length; i++){
-            curSum = curSum + nums[i];
-            if(curSum > maxSum){
-                maxSum = curSum;
-            }
-            
+            curSum += nums[i];
+            maxSum = Math.max(maxSum , curSum);
             if(curSum < 0){
-                curSum =0;
+                curSum  = 0;
             }
         }
         
