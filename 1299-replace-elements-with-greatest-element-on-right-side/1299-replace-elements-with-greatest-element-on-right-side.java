@@ -1,20 +1,21 @@
 class Solution {
     public int[] replaceElements(int[] arr) {
-        if(arr.length <= 1){
+        int n = arr.length;
+        if(n <= 1){
             return new int[] {-1}; 
         }
-        int[] ans = new int[arr.length];
-        int maxRight = arr[arr.length - 1];
-        ans[arr.length - 1] = -1;
+        
+        int maxRight = arr[n - 1];
+        arr[n - 1] = -1;
       
-        for(int i = arr.length - 2; i>=0; i--){
+        for(int i = n - 2; i>=0; i--){
             int temp = arr[i];
-            ans[i] = maxRight;
+            arr[i] = maxRight;
             if(maxRight < temp){
                 maxRight = temp;
             }
         }
         
-        return ans;
+        return arr;
     }
 }
